@@ -1,0 +1,46 @@
+{% extends "EduTrack/layout.html" %}
+{% block body %}
+
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'EduTrack-home' %}">Home</a>
+</nav>
+
+<div class="datepicker"></div>
+	<div class="datepicker-top">
+		<div class="btn-group">
+			<button class="tag">Today</button>
+			<button class="tag">Tomorrow</button>
+			<button class="tag">In 2 days</button>
+		</div>
+		<div class="month-selector">
+			<button class="arrow"><i class="material-icons">chevron_left</i></button>
+			<span class="month-name">{{ current_month }} {{ current_year }}</span>
+			<button class="arrow"><i class="material-icons">chevron_right</i></button>
+		</div>
+	</div>
+	<div class="datepicker-calendar">
+		<span class="day">Mo</span>
+		<span class="day">Tu</span>
+		<span class="day">We</span>
+		<span class="day">Th</span>
+		<span class="day">Fr</span>
+		<span class="day">Sa</span>
+		<span class="day">Su</span>
+
+        {% for day in days_in_month %}
+            <button class="date">
+                {{ day }}
+
+                {% for subject in subjects %}
+                    {% if subject.date.day == day and subject.date.month == current_month and subject.date.year == current_year %}
+                        <div>{{ subject.subject }}</div>
+                    {% endif %}
+                {% endfor %}
+            </button>
+        {% endfor %}
+    </div> 
+
+		
+</div>
+
+{% endblock %}

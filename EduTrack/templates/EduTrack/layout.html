@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}EduTrack{% endblock %}</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="{% static 'EduTrack/main.css' %}">
+
+        {% block script %}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="container">
+            {% block body %}
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ messages }}
+                </div>
+                {% endfor %}
+            {% endif %}
+            {% endblock %}
+        </div>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    </body>
+</html>

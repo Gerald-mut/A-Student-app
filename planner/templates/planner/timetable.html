@@ -1,0 +1,27 @@
+{% extends "EduTrack/layout.html" %}
+
+{% block body %}
+    <h1>Your Timetable</h1>
+    {% if timetable %}
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Subject</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in timetable %}
+                    <tr>{{ entry.day_of_week }}</tr>
+                    <tr>{{ entry.subject }}</tr>
+                    <tr>{{ entry.start_time }}</tr>
+                    <tr>{{ entry.end_time }}</tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No Classes in your timetable</p>
+    {% endif %}
+{% endblock %}

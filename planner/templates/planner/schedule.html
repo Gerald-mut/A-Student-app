@@ -1,0 +1,25 @@
+{% extends "EduTrack/layout.html" %}
+{% block body %}
+
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'EduTrack-home' %}">Home</a>
+</nav>
+
+<div class="dropdown mx-2">
+    <button width="100" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Subjects
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
+        <a class="dropdown-item" href="?subject=">All Subjects</a>
+        {% for subject in subjects %}
+            <a class="dropdown-item" href="?subject={{ subject }}">{{ subject }}</a> 
+        {% endfor %}
+    </div>
+  </div>
+
+  <div class="list-group">
+  {% for entry in subject_entries  %}
+     <li class="list-group-item list-group-item-primary">{{ entry.subject }} on {{ entry.day_of_week }} from {{ entry.start_time }} to {{ entry.end_time }}</li>
+  {% endfor  %}
+  </div>
+{% endblock %}

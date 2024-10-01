@@ -1,0 +1,51 @@
+{% extends "EduTrack/layout.html" %}
+{% block body %}
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom border-secondary">
+        <a class="navbar-brand" href="#">EduTrack</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'calendar' %}">Calendar</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Tasks</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Exams</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'schedule' %}">Schedule</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Profile</a>
+                </li>
+            {% endif %}
+          </ul>
+          <ul class="navbar-nav ml-auto"> <!-- Added ml-auto to push this ul to the right -->
+            {% if user.is_authenticated %}
+                <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'logout' %}">Logout<span class="sr-only">(current)</span></a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'register' %}">Register</a>
+                </li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+
+      <h1>Welcome to Your Dashboard>
+
+
+      <h3>Classes Today</h3>
+      <h3>Tasks Due</h3>
+{% endblock %}
